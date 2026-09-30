@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>A Little Surprise 💗</title>
+<style>
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:#09070c;color:#fff;font-family:Arial,sans-serif}
+.phone{max-width:430px;min-height:100vh;margin:auto;background:linear-gradient(160deg,#120914,#24101e,#0b0810);box-shadow:0 0 45px #000;overflow:hidden;position:relative}
+.page{min-height:100vh;padding:55px 24px 105px;display:none;animation:in .5s}
+.page.active{display:block}@keyframes in{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+.center{text-align:center}.emoji{font-size:65px;animation:pulse 1.5s infinite}
+@keyframes pulse{50%{transform:scale(1.1)}}
+h1{font-size:32px;color:#ffabc9;margin:18px 0 10px}h2{color:#ffabc9}
+p{color:#dfd1da;line-height:1.7;font-size:16px}
+.card{padding:23px;border-radius:25px;background:#ffffff0d;border:1px solid #ffffff18;box-shadow:0 15px 35px #0007;margin:20px 0}
+.btn{width:100%;padding:15px;border:0;border-radius:30px;background:linear-gradient(90deg,#ff4e88,#d946ef);color:white;font-weight:bold;font-size:16px;margin-top:12px;cursor:pointer}
+.btn.dark{background:#291925}.small{font-size:13px;color:#9d8995;text-align:center}
+.name{color:#ff9fc1;font-weight:bold;font-size:29px;text-align:center}
+input{width:100%;padding:15px;border-radius:14px;border:1px solid #70415a;background:#171019;color:white;font-size:16px}
+.choices button{margin:7px 0}
+.meter{height:25px;background:#291822;border-radius:30px;overflow:hidden;border:1px solid #60354b}
+.fill{height:100%;width:0;background:linear-gradient(90deg,#ff4d87,#ffb0cb);transition:width 1.5s}
+.percent{text-align:center;color:#ff9fc1;font-size:32px;font-weight:bold;margin:15px}
+.timeline{border-left:2px solid #ff7ba9;padding-left:18px}
+.event{margin:22px 0}.event b{color:#ffabc9}
+.quote{font-size:20px;text-align:center;font-style:italic;color:#ffd1df}
+.heart{font-size:35px;letter-spacing:8px;text-align:center}
+.nav{position:fixed;bottom:0;left:50%;transform:translateX(-50%);max-width:430px;width:100%;display:flex;background:#100a11f2;border-top:1px solid #452537;z-index:20}
+.nav button{flex:1;background:none;border:0;color:#a58f9d;padding:12px 2px;font-size:10px}.nav button.on{color:#ff8fb5}
+#result{display:none;text-align:center;color:#ffb3ca;margin-top:15px;font-weight:bold}
+</style>
+</head>
+<body>
+<div class="phone">
+
+<!-- 1 -->
+<section class="page active" id="p1">
+<div class="center">
+<div class="emoji">🌙</div>
+<h1>A Little Surprise</h1>
+<p>Not everything needs to be explained at first...</p>
+<div class="card">
+<p class="quote">"Some feelings are better discovered one page at a time." 💗</p>
+<p>There is a small story waiting for you.</p>
+</div>
+<button class="btn" onclick="go(2)">Open the story ✨</button>
+<p class="small">No name. No spoilers. Just a little surprise. 🤍</p>
+</div>
+</section>
+
+<!-- 2 -->
+<section class="page" id="p2">
+<div class="center"><div class="emoji">🌸</div><h1>Before You Continue</h1></div>
+<div class="card">
+<p>Maybe you've noticed someone who smiles a little differently when talking to you.</p>
+<p>Maybe you haven't. And that's okay.</p>
+<p>This isn't about pressure. It's simply about being honest with a feeling.</p>
+</div>
+<button class="btn" onclick="go(3)">Tell me who you are 💌</button>
+</section>
+
+<!-- 3 -->
+<section class="page" id="p3">
+<div class="center"><div class="emoji">📝</div><h1>Your Name</h1></div>
+<div class="card">
+<p style="text-align:center">Enter your name to unlock the personal pages.</p>
+<input id="herName" placeholder="Enter your name..." maxlength="30" autocomplete="off">
+<button class="btn" onclick="saveName()">Unlock 💗</button>
+</div>
+</section>
+
+<!-- 4 -->
+<section class="page" id="p4">
+<div class="center"><div class="emoji">💗</div><h1>Hello, <span class="nm">You</span></h1></div>
+<div class="card">
+<p>Now that your name is here, the story feels a little more real.</p>
+<p class="quote">"Out of all the ordinary conversations, some become special without us noticing." 🌷</p>
+</div>
+<button class="btn" onclick="go(5)">A little confession →</button>
+</section>
+
+<!-- 5 -->
+<section class="page" id="p5">
+<div class="center"><div class="emoji">🫶</div><h1>A Little Confession</h1></div>
+<div class="card">
+<p>I don't want to make this complicated.</p>
+<p>I just want to say that I genuinely like talking with you, and somewhere along the way, you became someone special to me.</p>
+<p><strong>That's the whole confession. Simple and honest. 🤍</strong></p>
+</div>
+<button class="btn" onclick="go(6)">See the memories page 🌷</button>
+</section>
+
+<!-- 6 -->
+<section class="page" id="p6">
+<div class="center"><div class="emoji">📖</div><h1>Our Little Timeline</h1></div>
+<div class="card timeline">
+<div class="event"><b>First conversations</b><p>Two people talking, not knowing where the story would go.</p></div>
+<div class="event"><b>More conversations</b><p>Random jokes, little moments and familiar smiles.</p></div>
+<div class="event"><b>Somewhere along the way</b><p>The conversations started meaning a little more.</p></div>
+<div class="event"><b>Today</b><p>This page exists because honesty felt better than silence.</p></div>
+</div>
+<button class="btn" onclick="go(7)">Check our love meter 💞</button>
+</section>
+
+<!-- 7 -->
+<section class="page" id="p7">
+<div class="center"><div class="emoji">💞</div><h1>Love Meter</h1></div>
+<div class="card">
+<div class="name nm">You</div>
+<div class="percent" id="pct">0%</div>
+<div class="meter"><div class="fill" id="bar"></div></div>
+<p class="center">This meter is just for fun — real feelings can't be measured. 🌸</p>
+<div class="heart">♡ ♥ ♡ ♥ ♡</div>
+</div>
+<button class="btn" onclick="go(8)">One more page 💌</button>
+</section>
+
+<!-- 8 -->
+<section class="page" id="p8">
+<div class="center"><div class="emoji">🌹</div><h1>A Question For You</h1></div>
+<div class="card">
+<div class="name nm">You</div>
+<p class="center">I like you, and I'd love to know you better.</p>
+<p class="quote">Would you like to give this little story a chance?</p>
+
+<div id="questionButtons">
+<button class="btn" onclick="yesAnswer()">YES 💗</button>
+<button class="btn dark" onclick="noStep(1)">NO 🌷</button>
+</div>
+
+<div id="noBox" style="display:none;text-align:center">
+<p id="noText"></p>
+<button class="btn" id="noAction" onclick="noStep(2)">Are you sure? 👀</button>
+</div>
+</div>
+</section>
+
+<!-- 9 -->
+<section class="page" id="p9">
+<div class="center"><div class="emoji">🎁</div><h1>One Last Surprise</h1></div>
+<div class="card">
+<p class="quote">You reached the final page... but there is still one little surprise. ✨</p>
+<button class="btn" id="surpriseBtn" onclick="revealSurprise()">Open the surprise 🎀</button>
+<div id="surprise" style="display:none;text-align:center">
+<div style="font-size:60px;margin:18px">💗🌷✨</div>
+<h2>For <span class="nm">You</span></h2>
+<p>You are not just another name in a story.</p>
+<p>You are the reason this little website exists. 🫶</p>
+<p class="quote">"Maybe this is only the beginning..."</p>
+<p><strong>— Brijesh 🤍</strong></p>
+</div>
+</div>
+</section>
+
+<nav class="nav">
+<button id="n1" class="on" onclick="go(1)">🌙<br>Start</button>
+<button id="n2" onclick="go(2)">🌸<br>Story</button>
+<button id="n3" onclick="go(3)">📝<br>Name</button>
+<button id="n4" onclick="go(5)">💗<br>Feelings</button>
+<button id="n5" onclick="go(8)">💌<br>Question</button>
+</nav>
+</div>
+
+<script>
+let name="You";
+function saveName(){
+ let v=document.getElementById("herName").value.trim();
+ const input=document.getElementById("herName");
+ if(v.toLowerCase() === "maya"){
+   name="Maya";
+   input.style.borderColor="#ff7eaa";
+   document.querySelectorAll(".nm").forEach(x=>x.textContent=name);
+   go(4);
+ }else{
+   input.value="";
+   input.placeholder="Only Maya can unlock this 💗";
+   input.style.borderColor="#ff4e88";
+   const oldMsg=document.getElementById("lockMsg");
+   if(oldMsg) oldMsg.remove();
+   const msg=document.createElement("p");
+   msg.id="lockMsg";
+   msg.style.cssText="color:#ff9fc1;text-align:center;margin-top:12px;font-size:14px";
+   msg.textContent="🔒 Access locked — only Maya can open this story.";
+   input.parentNode.appendChild(msg);
+ }
+}
+function go(n){
+ document.querySelectorAll(".page").forEach(x=>x.classList.remove("active"));
+ document.getElementById("p"+n).classList.add("active");
+ document.querySelectorAll(".nav button").forEach(x=>x.classList.remove("on"));
+ let map={1:1,2:2,3:3,4:2,5:4,6:4,7:4,8:5,9:5};
+ document.getElementById("n"+map[n]).classList.add("on");
+ scrollTo(0,0);
+ if(n===7) meter();
+}
+function meter(){
+ setTimeout(()=>{
+  document.getElementById("bar").style.width="100%";
+  let n=0, el=document.getElementById("pct");
+  let t=setInterval(()=>{n+=2;el.textContent=n+"%";if(n>=100)clearInterval(t)},22);
+ },150);
+}
+let noCount=0;
+function yesAnswer(){
+ document.getElementById("questionButtons").style.display="none";
+ let r=document.getElementById("noBox");
+ r.style.display="block";
+ document.getElementById("noText").innerHTML="💗 <strong>YES submitted!</strong><br>Thank you, "+name+" 🌸";
+ document.getElementById("noAction").style.display="none";
+ setTimeout(()=>go(9),1600);
+}
+function noStep(step){
+ noCount=step;
+ const box=document.getElementById("noBox");
+ const text=document.getElementById("noText");
+ const action=document.getElementById("noAction");
+ box.style.display="block";
+ if(step===1){
+   text.textContent="Are you sure you want to choose NO? 🥺";
+   action.textContent="I'm sure it's NO";
+   action.onclick=()=>noStep(2);
+ }else if(step===2){
+   text.textContent="Really sure? 👀 Think about it one more time.";
+   action.textContent="Still NO";
+   action.onclick=()=>noStep(3);
+ }else if(step===3){
+   text.textContent="Last check... your answer can always be YES or NO. 🌷";
+   action.textContent="Go back to the choices";
+   action.onclick=()=>resetQuestion();
+ }
+}
+function resetQuestion(){
+ document.getElementById("noBox").style.display="none";
+ document.getElementById("questionButtons").style.display="block";
+}
+function revealSurprise(){
+ document.getElementById("surpriseBtn").style.display="none";
+ document.getElementById("surprise").style.display="block";
+}
+</script>
+</body>
+</html>
